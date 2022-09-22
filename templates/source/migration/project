@@ -1,0 +1,64 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+/* {{@snippet:begin_class}} */
+
+class MigrateRevision{{$ __globals__/PYRONOME_CURRENT_DATE}}{{$ __globals__/PYRONOME_CURRENT_TIME}} extends Migration
+{
+
+    /* {{@snippet:begin_properties}} */
+
+    /* {{@snippet:end_properties}} */
+
+    /* {{@snippet:begin_methods}} */
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        /* {{@snippet:begin_up_method}} */
+
+{{MODEL_UP}}
+        {{MODEL_RELATIONS_UP}}
+
+        /* {{@snippet:end_up_method}} */
+    }
+
+    
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+
+        /* {{@snippet:begin_down_method}} */
+        /*
+{{MODEL_DOWN}}
+        {{MODEL_RELATIONS_DOWN}}
+        */
+		/* {{@snippet:end_down_method}} */
+
+    }
+
+    public function listTableForeignKeys($table)
+    {
+        $conn = Schema::getConnection()->getDoctrineSchemaManager();
+
+        return array_map(function($key) {
+            return $key->getName();
+        }, $conn->listTableForeignKeys($table));
+    }
+
+    /* {{@snippet:end_methods}} */
+}
+
+/* {{@snippet:end_class}} */

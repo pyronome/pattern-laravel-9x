@@ -1,0 +1,25 @@
+        /* {{@snippet:begin_{{$ __value__/__lowercase_text__}}table_migration}} */        
+        if (!Schema::hasTable('{{$ __value__/__lowercase_text__}}table')) {
+            Schema::create('{{$ __value__/__lowercase_text__}}table', function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->timestamps();
+                $table->bigInteger('created_by')->default(0);
+                $table->bigInteger('updated_by')->default(0);
+                $table->boolean('deleted')->default(0);
+{{MODEL{{$ ../__item_index__/__value__}}_MIGRATION_CREATE}}
+            });
+        } else {
+            Schema::table('{{$ __value__/__lowercase_text__}}table', function (Blueprint $table) {
+                $foreignKeys = $this->listTableForeignKeys('{{$ __value__/__lowercase_text__}}table');
+                //Schema::disableForeignKeyConstraints();
+{{MODEL{{$ ../__item_index__/__value__}}_MIGRATION_DROP_KEYS}}
+                //Schema::enableForeignKeyConstraints();
+            });
+
+            Schema::table('{{$ __value__/__lowercase_text__}}table', function (Blueprint $table) {
+{{MODEL{{$ ../__item_index__/__value__}}_MIGRATION_UPDATE}}
+            });
+            
+        } // if (!Schema::hasTable('{{$ __value__/__lowercase_text__}}table')) {
+{{MODEL{{$ ../__item_index__/__value__}}_MIGRATION_FILE_IMAGE_PROPERTY}}{{MODEL{{$ ../__item_index__/__value__}}_MIGRATION_RADIO_PROPERTY}}{{MODEL{{$ ../__item_index__/__value__}}_MIGRATION_UP_SELECTION_PROPERTY}}
+        /* {{@snippet:end_{{$ __value__/__lowercase_text__}}table_migration}} */

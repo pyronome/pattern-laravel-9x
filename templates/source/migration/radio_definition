@@ -1,0 +1,15 @@
+        if (!Schema::hasTable('{{$ ../../../name/__value__/__lowercase_text__}}table')) {
+            Schema::table('{{$ ../../../name/__value__/__lowercase_text__}}table', function(Blueprint $table) {
+                if (Schema::hasColumn('{{$ ../../../name/__value__/__lowercase_text__}}table', '{{$ ../name/__value__/__lowercase_text__}}')) { 
+                    $table->unsignedBigInteger('{{$ ../name/__value__/__lowercase_text__}}')->nullable()->unsigned()->change();
+                } else {
+                    $table->unsignedBigInteger('{{$ ../name/__value__/__lowercase_text__}}')->nullable()->unsigned();
+                }
+
+                /* $foreignKeys = $this->listTableForeignKeys('{{$ ../../../name/__value__/__lowercase_text__}}table');
+
+                if (!in_array('{{$ ../../../name/__value__/__lowercase_text__}}table_{{$ ../name/__value__/__lowercase_text__}}_foreign', $foreignKeys)) {
+                    $table->foreign('{{$ ../name/__value__/__lowercase_text__}}')->references('id')->on('wisilomodeloptiontable'); 
+                } */
+            });
+        } // if (!Schema::hasTable('{{$ ../../../name/__value__/__lowercase_text__}}table')) {
